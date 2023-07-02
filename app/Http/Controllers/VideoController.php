@@ -41,9 +41,9 @@ class VideoController extends Controller
     }
 
     public function save(Request $request){
-        $request->validate([
+        /*$request->validate([
             "file"=>"required | mimes:mp4,x-flv,x-mpegURL,MP2T,3gpp,quicktime,x-msvideo,x-ms-wmv |max:10240"
-        ]);
+        ]);*/
         
         $file = $request->file('file');        
         $path = $file->storeAs('',$file->getClientOriginalName(), ['disk' => 'public']);
@@ -54,7 +54,7 @@ class VideoController extends Controller
 
         $duration = $info['playtime_seconds'];
         if($duration > 15){
-            return response('',403);
+            //return response('',403);
         }
 
         dispatch(new ProcessSavingVideo($file->getClientOriginalName(),$fullpath));

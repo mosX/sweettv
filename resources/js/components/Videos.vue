@@ -56,7 +56,7 @@ import { initCustomFormatter, onMounted, ref } from 'vue';
             },
             data:formData
         }).then((ret)=>{
-            $('#addVideoModal').hide();
+            $('#addVideoModal').modal('hide');
         });
     }
 
